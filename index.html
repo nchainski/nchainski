@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Static Website</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+  <canvas id="snowCanvas"></canvas>
+  <section class="hero">
+    <div class="overlay-image left">
+      <div class="image-container">
+        <img src="ns.jpeg" alt="Left Image">
+      </div>
+      <h1 class="overlay-text">$NIGGASKI</h1>
+    </div>
+    <div class="main-image-container">
+      <img src="niggaski.png" alt="Hero Image">
+      <div class="image-mask"></div>
+      <!-- <div class="hero-textbox">
+        <h1>Welcome to Our Website</h1>
+        <p>Your tagline or description goes here.</p>
+      </div> -->
+    </div>
+    <div class="overlay-image right">
+      <div class="image-container">
+        <img src="ns.jpeg" alt="Right Image">
+      </div>
+      <h1 class="overlay-text">$NIGGASKI</h1>
+    </div>
+  </section>
+
+  <section class="mobile-hero">
+    <div class="mobile-image">
+      <img src="ns.jpeg" alt="Mobile Hero Image">
+    </div>
+    <div class="mobile-textbox">
+      <h1>$NIGGASKI</h1>
+      <p>The first NiggaChain AI Layer 2 driven coin in the efforts to eliminate racial profile on the slopes.</p>
+    </div>
+  </section>
+
+  <div class="content">
+    <section class="about-us">
+      <h1>About $NIGGASKI</h1>
+      <p>
+        Ski season is here, and we are learning and evolving. Nigga Chain AI Layer 2 is on its way to deliver a new coin aimed at delivering the best experiences to niggas while skiing. We finna bridge.
+      </p>
+    </section>
+  </div>
+  <footer class="footer">
+    <div class="social-cards">
+      <a href="https://t.me/your-telegram-link" target="_blank" class="social-card">
+        <img src="tg.png" alt="Telegram Logo">
+        <p>Telegram</p>
+      </a>
+      <a href="https://twitter.com/your-twitter-link" target="_blank" class="social-card">
+        <img src="x.png" alt="Twitter Logo">
+        <p>Twitter</p>
+      </a>
+      <a href="https://pump.fun/your-pumpfun-link" target="_blank" class="social-card">
+        <img src="pf.png" alt="Pump.fun Logo">
+        <p>Pump.fun</p>
+      </a>
+    </div>
+  </footer>
+  <script>
+    const canvas = document.getElementById('snowCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Resize canvas to fill the window
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Array to hold snowflake objects
+    const snowflakes = [];
+
+    // Create a snowflake
+    function createSnowflake() {
+        return {
+            x: Math.random() * canvas.width, // Random horizontal position
+            y: Math.random() * canvas.height, // Random vertical position
+            radius: Math.random() * 3 + 1, // Snowflake size
+            speed: Math.random() * 2 + 0.5, // Fall speed
+            opacity: Math.random() * 0.8 + 0.2, // Opacity for blending
+        };
+    }
+
+    // Populate the snowflakes array
+    for (let i = 0; i < 200; i++) {
+        snowflakes.push(createSnowflake());
+    }
+
+    // Animation loop
+    function animateSnow() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+
+        // Draw and update each snowflake
+        snowflakes.forEach((flake) => {
+            ctx.beginPath();
+            ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 255, 255, ${flake.opacity})`;
+            ctx.fill();
+
+            // Update position
+            flake.y += flake.speed;
+
+            // Reset snowflake to the top if it goes out of view
+            if (flake.y > canvas.height) {
+                flake.x = Math.random() * canvas.width;
+                flake.y = -flake.radius;
+            }
+        });
+
+        requestAnimationFrame(animateSnow); // Recursive animation
+    }
+
+    animateSnow();
+
+    // Adjust canvas size when the window is resized
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,234 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: "Pixelify Sans", sans-serif;
+    box-sizing: border-box;
+    background-color: #000814; /* Almost black dark blue */
+    color: #e0e4e8; /* Light grayish-blue text for readability */
+}
+
+#snowCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allow interactions with elements below */
+    z-index: 9999; /* Place it above all other elements */
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: #001122; /* Very dark blue, close to black */
+    color: #e0e4e8;
+}
+
+.social-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Wrap cards to the next line on smaller screens */
+    margin: 20px;
+}
+
+.social-card {
+    width: 20vw; /* Responsive width based on viewport width */
+    max-width: 150px; /* Maximum width for larger screens */
+    min-width: 100px; /* Minimum width for smaller screens */
+    text-align: center;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #e0e4e8;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.social-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+}
+
+.social-card img {
+    width: 40%; /* Responsive image size */
+    max-width: 60px; /* Maximum width for larger screens */
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 50%; /* Ensure logos have rounded edges */
+}
+
+.social-card p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+    .social-card {
+        width: 30vw; /* Adjust card width for smaller screens */
+    }
+
+    .social-card img {
+        width: 50%; /* Larger image size for smaller cards */
+    }
+}
+
+/* Hero Section */
+.hero {
+    width: 100%;
+    min-height: 55vh; /* Occupy 60% of the viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #000814; /* Matches the website background */
+    overflow: hidden; /* Prevent content from spilling out */
+    padding-top: 20px; /* Add padding at the top */
+}
+
+/* Main Image Container */
+.main-image-container {
+    position: relative;
+    width: 60%; /* Reduce the width for a smaller hero image */
+    max-width: 800px; /* Cap the maximum size */
+    height: auto; /* Allow container to grow dynamically */
+    border-radius: 20px; /* Rounded corners */
+    overflow: hidden; /* Ensure the mask stays within bounds */
+}
+
+/* Hero Image */
+.hero img {
+    display: block; /* Prevent extra spacing caused by inline images */
+    max-width: 100%; /* Fit the width of the container */
+    max-height: 80%; /* Prevent the image from taking too much height */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure the entire image is visible */
+    z-index: 1; /* Ensure visibility above other elements */
+}
+
+/* Image Mask */
+.image-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2); /* Transparent dark overlay */
+    z-index: 2;
+}
+
+/* Overlay Images */
+.overlay-image {
+    position: absolute;
+    width: 20vw; /* Adjusted width for better scaling */
+    max-width: 300px; /* Cap the maximum size */
+    text-align: center; /* Center-align text */
+    z-index: 3; /* Ensure it's above the main image */
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.overlay-image img {
+    width: 100%;
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8); /* Shadow around the image */
+    object-fit: cover;
+}
+
+.overlay-image.left {
+    top: 50%; /* Position vertically at the center */
+    left: 5%; /* Positioned closer to the edge */
+    margin-right: 10vw; /* Add space on the right side of the left image */
+}
+
+.overlay-image.right {
+    top: 50%; /* Position vertically at the center */
+    right: 5%; /* Positioned closer to the edge */
+    margin-left: 10vw; /* Add space on the left side of the right image */
+}
+
+.overlay-text {
+    font-size: 2rem;
+    text-align: center;
+    color: #e0e4e8;
+    padding: 5px;
+    margin-top: 10px;
+    /* background: rgba(0, 0, 0, 0.6); Semi-transparent background for better readability */
+    border-radius: 5px; /* Rounded corners for text box */
+    width: 80%; /* Prevent text from stretching */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* Adds a subtle shadow */
+}
+
+/* Content */
+.content {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+.about-us {
+    background: rgba(0, 10, 20, 0.9); /* Nearly black with a hint of blue */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); /* Subtle shadow for depth */
+}
+
+.about-us h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #e0e4e8; /* Light grayish-blue heading color */
+}
+
+.about-us p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #b0bcc6; /* Dimmer grayish-blue for paragraph text */
+}
+
+/* Hide mobile-hero section by default */
+.mobile-hero {
+    display: none;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .mobile-hero .mobile-image img {
+    width: 80%; /* Adjust the width of the image for mobile */
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Add a subtle shadow */
+    margin-top: 10px;
+  }
+  
+  .mobile-hero .mobile-textbox {
+    margin-top: 10px;
+  }
+  
+  .mobile-hero .mobile-textbox h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+  }
+  
+  .mobile-hero .mobile-textbox p {
+    font-size: 1.2rem;
+    color: #b0bcc6;
+  }
+  
+  /* Media Query for Smaller Screens */
+  @media (max-width: 768px) {
+    .hero {
+      display: none; /* Hide the main hero section */
+    }
+    .mobile-hero {
+      display: block; /* Show the mobile-optimized section */
+    }
+  }
+  
